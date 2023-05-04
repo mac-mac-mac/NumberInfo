@@ -47,7 +47,7 @@
             End If
 
             If radPrimes.Checked Then
-                lblNumberInfo.Text = "Prime Factorization Form" + Convert.ToString(intInput)
+                lblNumberInfo.Text = getPrimes(intInput)
             End If
 
             If radWord.Checked Then
@@ -233,6 +233,43 @@
 
         Return wordForm
 
+    End Function
+
+    Private Function getPrimes(num As Integer) As String
+        Dim message As String = Convert.ToString(num) + " - Prime Factorization:" + vbNewLine + vbNewLine
+        Dim primes As New List(Of String)
+
+        If num = 1 Then
+            Return message + "1 is neither prime nor composite. 1 has only 1 factor (itself)."
+        End If
+
+        Dim x As Integer = 2
+        While x * x <= num
+            If num Mod x = 0 Then
+                primes.Add(Convert.ToString(x))
+                num = num / x
+            Else
+                x = x + 1
+            End If
+        End While
+
+        If num > 1 Then
+            primes.Add(Convert.ToString(num))
+        End If
+
+        Return message + String.Join(" x ", primes)
+    End Function
+
+    Private Function getRoman(num As Integer) As String
+        Return ""
+    End Function
+
+    Private Function getHex(num As Integer) As String
+        Return ""
+    End Function
+
+    Private Function getBin(num As Integer) As String
+        Return ""
     End Function
 End Class
 
