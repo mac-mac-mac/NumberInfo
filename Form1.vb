@@ -35,15 +35,15 @@
             intInput = Convert.ToInt32(txtNumber.Text)
 
             If radBin.Checked Then
-                lblNumberInfo.Text = "Binary Form" + Convert.ToString(intInput)
+                lblNumberInfo.Text = getBin(intInput)
             End If
 
             If radHex.Checked Then
-                lblNumberInfo.Text = "Hexadecimal Form" + Convert.ToString(intInput)
+                lblNumberInfo.Text = getHex(intInput)
             End If
 
             If radRoman.Checked Then
-                lblNumberInfo.Text = "Roman Numeral Form" + Convert.ToString(intInput)
+                lblNumberInfo.Text = getRoman(intInput)
             End If
 
             If radPrimes.Checked Then
@@ -261,15 +261,21 @@
     End Function
 
     Private Function getRoman(num As Integer) As String
-        Return ""
+        Dim romanForm As String = Convert.ToString(num) + " - Roman Numeral Form:" + vbNewLine + vbNewLine
+
+        Return romanForm
     End Function
 
     Private Function getHex(num As Integer) As String
-        Return ""
+        Dim hexForm As String = Convert.ToString(num) + " - Hexadecimal Form:" + vbNewLine + vbNewLine
+
+        Return hexForm
     End Function
 
     Private Function getBin(num As Integer) As String
-        Return ""
+        Dim binForm As String = Convert.ToString(num) + " - Binary Form:" + vbNewLine + vbNewLine
+
+        Return binForm
     End Function
 End Class
 
