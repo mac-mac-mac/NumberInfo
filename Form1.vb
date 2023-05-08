@@ -263,19 +263,91 @@
     Private Function getRoman(num As Integer) As String
         Dim romanForm As String = Convert.ToString(num) + " - Roman Numeral Form:" + vbNewLine + vbNewLine
 
+        If num = 1000 Then
+            Return romanForm + "M"
+        End If
+
+        While num >= 900
+            romanForm = romanForm + "CM"
+            num = num - 900
+        End While
+
+        While num >= 500
+            romanForm = romanForm + "D"
+            num = num - 500
+        End While
+
+        While num >= 400
+            romanForm = romanForm + "CD"
+            num = num - 400
+        End While
+
+        While num >= 100
+            romanForm = romanForm + "C"
+            num = num - 100
+        End While
+
+        While num >= 90
+            romanForm = romanForm + "XC"
+            num = num - 90
+        End While
+
+        While num >= 50
+            romanForm = romanForm + "L"
+            num = num - 50
+        End While
+
+        While num >= 40
+            romanForm = romanForm + "XL"
+            num = num - 40
+        End While
+
+        While num >= 10
+            romanForm = romanForm + "X"
+            num = num - 10
+        End While
+
+        While num >= 9
+            romanForm = romanForm + "IX"
+            num = num - 9
+        End While
+
+        While num >= 5
+            romanForm = romanForm + "V"
+            num = num - 5
+        End While
+
+        While num >= 4
+            romanForm = romanForm + "IV"
+            num = num - 4
+        End While
+
+        While num >= 1
+            romanForm = romanForm + "I"
+            num = num - 1
+        End While
+
         Return romanForm
+
     End Function
 
     Private Function getHex(num As Integer) As String
         Dim hexForm As String = Convert.ToString(num) + " - Hexadecimal Form:" + vbNewLine + vbNewLine
 
-        Return hexForm
+        Return hexForm + Hex(num) + " (Base 16)"
     End Function
 
     Private Function getBin(num As Integer) As String
         Dim binForm As String = Convert.ToString(num) + " - Binary Form:" + vbNewLine + vbNewLine
 
-        Return binForm
+        Dim binNum As String = ""
+
+        While num > 0
+            binNum = binNum.Insert(0, num Mod 2).ToString()
+            num = Int(num / 2)
+        End While
+
+        Return binForm + binNum + " (Base 2)"
     End Function
 End Class
 
